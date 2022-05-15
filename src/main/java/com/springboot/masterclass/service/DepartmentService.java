@@ -14,13 +14,13 @@ import java.util.Optional;
 public class DepartmentService {
 
     private static final Logger LOG = LoggerFactory.getLogger(DepartmentService.class);
-    private DepartmentRepository repository;
+    private final DepartmentRepository repository;
 
     public DepartmentService(DepartmentRepository repository) {
         this.repository = repository;
     }
 
-    public List<Department> getAllDepartments(){
+    public List<Department> getAllDepartments() {
         return repository.findAll();
     }
 
@@ -30,19 +30,19 @@ public class DepartmentService {
 
     public Department getDepartmentById(long id) {
         Optional<Department> optional = repository.findById(id);
-        if(optional.isPresent()){
+        if (optional.isPresent()) {
             return optional.get();
-        }else {
-            throw new DataNotFoundException("Department not found with Id: "+id);
+        } else {
+            throw new DataNotFoundException("Department not found with Id: " + id);
         }
     }
 
     public String deleteDepartmentById(Long id) {
         try {
             repository.deleteById(id);
-            return "Successfully deleted the department with id: "+id;
-        }catch (Exception e){
-            LOG.error("Failed to delete department with id "+id,e);
+            return "Successfully deleted the department with id: " + id;
+        } catch (Exception e) {
+            LOG.error("Failed to delete department with id " + id, e);
             throw e;
         }
 
