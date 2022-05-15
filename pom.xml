@@ -52,7 +52,6 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -98,7 +97,7 @@
 				</executions>
 				<configuration>
 					<repository>${project.artifactId}</repository>
-					<tag>${project.version}</tag>
+					<tag>latest</tag>
 					<buildArgs>
 						<JAR_FILE>target/springboot_masterclass-0.0.1-SNAPSHOT.jar</JAR_FILE>
 					</buildArgs>
